@@ -91,5 +91,5 @@ Note that when you check your code into GitHub, all of your tests will automatic
 |Challenge|Link|
 |:-----------|:------------------------------|
 |Challenge01|https://github.com/bushraAD98/data-structures-and-algorithms/pull/1|
-|Challenge03||Challenge01|https://github.com/bushraAD98/data-structures-and-algorithms/pull/1|
+|Challenge03|https://github.com/bushraAD98/data-structures-and-algorithms/pull/1|
 |
