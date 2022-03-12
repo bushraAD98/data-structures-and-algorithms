@@ -36,6 +36,48 @@ string += 'NULL';
 
 }
 
+append(newValue) {
+  const node = new Node(newValue);
+  let current = this.head;
+  if (this.head == null) {
+      this.head = node;
+  } else {
+      while (current.next != null) {
+          current = current.next;
+      } current.next = node;
+  }
+}
+
+
+insertBefore(previous, newValue) {
+  const node = new Node(newValue);
+  let current = this.head;
+  while (current.next != null) {
+      current = current.next;
+      if (current.next.value == previous) {
+          node.next = current.next;
+          current.next = node;
+          return null;
+      }
+  }
+}
+
+insertAfter(previous, newValue) {
+  const node = new Node(newValue);
+  let current = this.head;
+  while (current.next != null) {
+      current = current.next;
+      if (current.value == previous) {
+          node.next = current.next;
+          current.next = node;
+          return null;
+      }
+  }
+
+}
+
+
+
 }
 
 module.exports = LinkedList;

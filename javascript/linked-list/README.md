@@ -1,11 +1,25 @@
-# Singly Linked List
-is a data structure baisically used to store data it looks like an array but with different features.
+# Challenge Summary
+in this challenge we are required to do 3 methods 
+1. to append a node to the linked list
+2. to add new node pefore a specific node
+3. to add node after a specific node
 
-## Challenge
-to implement a linked list & test it
+## Whiteboard Process
+<!-- Embedded whiteboard image -->
 
 ## Approach & Efficiency
-<!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
+## append:
+![img](./images/appending.PNG)
 
-## API
-<!-- Description of each method publicly available to your Linked List -->
+## insert before :
+
+![img](./images/beforeit.PNG)
+
+## insert after :
+
+![img](./images/afterit.PNG)
+
+
+
+## Solution
+<!-- Show how to run your code, and examples of it in action -->

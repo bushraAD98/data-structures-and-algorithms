@@ -45,6 +45,44 @@ expect(ll.includes('first')).toBeTruthy();
 expect(ll.includes('third')).toBeFalsy();
 })
 
+it('test appending value',()=>{
+  const LL = new LinkedLilst() ;
+  LL.append('first');
+  LL.append('second');
+  LL.append('third');
+  expect(LL.head.value).toEqual('first');
+  expect(LL.head.next.value).toEqual('second');
+  expect(LL.head.next.next.value).toEqual('third');
+  expect(LL.head.next.next.next).toBeNull();
+})
+
+
+it('test insert before specific node',()=>{
+  const LL = new LinkedLilst() ;
+ 
+  LL.insert('D')
+  LL.insert('B')
+  LL.insert('A')
+  LL.insertBefore('D','C');// A,B,F,C,D
+  expect(LL.head.value).toEqual('A');
+  expect(LL.head.next.value).toEqual('B');
+  expect(LL.head.next.next.value).toEqual('C');
+  expect(LL.head.next.next.next.value).toEqual('D');
+  expect(LL.head.next.next.next.next).toBeNull();
+})
+
+it('test insert after specific node ',()=>{
+  const LL = new LinkedLilst() ;
+  LL.insert('C')
+  LL.insert('B')
+  LL.insert('A')
+  LL.insertAfter('C','D');// A,B,C,F,D
+  expect(LL.head.value).toEqual('A');
+  expect(LL.head.next.value).toEqual('B');
+  expect(LL.head.next.next.value).toEqual('C');
+  expect(LL.head.next.next.next.value).toEqual('D');
+  expect(LL.head.next.next.next.next).toBeNull();
+})
 
 // it('string testing',()=>{
 //   const ll = new LinkedLilst();
