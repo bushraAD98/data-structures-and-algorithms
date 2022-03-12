@@ -19,6 +19,10 @@ in this challenge we are required to do 3 methods
 
 ![img](./images/afterit.PNG)
 
+## Kth code :
+
+![img](./images/kthit.PNG)
+
 
 
 ## Solution

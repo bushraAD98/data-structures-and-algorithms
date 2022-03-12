@@ -25,59 +25,80 @@ class LinkedList {
     return false;
   }
 
-toString(){
-    let string = '';
-let current = this.head;
-while(current != null){
-string += `{${current.value} -> }`
-current = current.next;
-}
-string += 'NULL';
-
-}
-
-append(newValue) {
-  const node = new Node(newValue);
-  let current = this.head;
-  if (this.head == null) {
-      this.head = node;
-  } else {
-      while (current.next != null) {
-          current = current.next;
-      } current.next = node;
+  toString() {
+    let string = "";
+    let current = this.head;
+    while (current != null) {
+      string += `{${current.value} -> }`;
+      current = current.next;
+    }
+    string += "NULL";
   }
-}
 
+  append(newValue) {
+    const node = new Node(newValue);
+    let current = this.head;
+    if (this.head == null) {
+      this.head = node;
+    } else {
+      while (current.next != null) {
+        current = current.next;
+      }
+      current.next = node;
+    }
+  }
 
-insertBefore(previous, newValue) {
-  const node = new Node(newValue);
-  let current = this.head;
-  while (current.next != null) {
+  insertBefore(previous, newValue) {
+    const node = new Node(newValue);
+    let current = this.head;
+    while (current.next != null) {
       current = current.next;
       if (current.next.value == previous) {
-          node.next = current.next;
-          current.next = node;
-          return null;
+        node.next = current.next;
+        current.next = node;
+        return null;
       }
+    }
   }
-}
 
-insertAfter(previous, newValue) {
-  const node = new Node(newValue);
-  let current = this.head;
-  while (current.next != null) {
+  insertAfter(previous, newValue) {
+    const node = new Node(newValue);
+    let current = this.head;
+    while (current.next != null) {
       current = current.next;
       if (current.value == previous) {
-          node.next = current.next;
-          current.next = node;
-          return null;
+        node.next = current.next;
+        current.next = node;
+        return null;
       }
+    }
   }
 
+  findKth(k) {
+    let current = this.head;
+    let nodes = 0;
+
+
+while(current ){
+nodes ++;
+current = current.next;
+
 }
+if (k < 0 || k > nodes) {
+  return "exception";
+}
+nodes = nodes-1-k;
+current = this.head;
+    while (nodes !==0) {
+        current = current.next;
 
+      nodes --;  
+      }
+     
+    
 
-
+    return current.value;
+  }
 }
 
 module.exports = LinkedList;

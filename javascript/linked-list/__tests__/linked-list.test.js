@@ -46,42 +46,60 @@ expect(ll.includes('third')).toBeFalsy();
 })
 
 it('test appending value',()=>{
-  const LL = new LinkedLilst() ;
-  LL.append('first');
-  LL.append('second');
-  LL.append('third');
-  expect(LL.head.value).toEqual('first');
-  expect(LL.head.next.value).toEqual('second');
-  expect(LL.head.next.next.value).toEqual('third');
-  expect(LL.head.next.next.next).toBeNull();
+  const ll = new LinkedLilst() ;
+  ll.append('first');
+  ll.append('second');
+  ll.append('third');
+  expect(ll.head.value).toEqual('first');
+  expect(ll.head.next.value).toEqual('second');
+  expect(ll.head.next.next.value).toEqual('third');
+  expect(ll.head.next.next.next).toBeNull();
 })
 
 
 it('test insert before specific node',()=>{
-  const LL = new LinkedLilst() ;
+  const ll = new LinkedLilst() ;
  
-  LL.insert('D')
-  LL.insert('B')
-  LL.insert('A')
-  LL.insertBefore('D','C');// A,B,F,C,D
-  expect(LL.head.value).toEqual('A');
-  expect(LL.head.next.value).toEqual('B');
-  expect(LL.head.next.next.value).toEqual('C');
-  expect(LL.head.next.next.next.value).toEqual('D');
-  expect(LL.head.next.next.next.next).toBeNull();
+  ll.insert('D')
+  ll.insert('B')
+  ll.insert('A')
+  ll.insertBefore('D','C');// A,B,F,C,D
+  expect(ll.head.value).toEqual('A');
+  expect(ll.head.next.value).toEqual('B');
+  expect(ll.head.next.next.value).toEqual('C');
+  expect(ll.head.next.next.next.value).toEqual('D');
+  expect(ll.head.next.next.next.next).toBeNull();
 })
 
 it('test insert after specific node ',()=>{
-  const LL = new LinkedLilst() ;
-  LL.insert('C')
-  LL.insert('B')
-  LL.insert('A')
-  LL.insertAfter('C','D');// A,B,C,F,D
-  expect(LL.head.value).toEqual('A');
-  expect(LL.head.next.value).toEqual('B');
-  expect(LL.head.next.next.value).toEqual('C');
-  expect(LL.head.next.next.next.value).toEqual('D');
-  expect(LL.head.next.next.next.next).toBeNull();
+  const ll = new LinkedLilst() ;
+  ll.insert('C')
+  ll.insert('B')
+  ll.insert('A')
+  ll.insertAfter('C','D');// A,B,C,F,D
+  expect(ll.head.value).toEqual('A');
+  expect(ll.head.next.value).toEqual('B');
+  expect(ll.head.next.next.value).toEqual('C');
+  expect(ll.head.next.next.next.value).toEqual('D');
+  expect(ll.head.next.next.next.next).toBeNull();
+})
+
+
+it('test the Kth method',()=>{
+  const ll = new LinkedLilst() ;
+  ll.append(-55);
+  ll.append(12);
+  ll.append(11);
+  ll.append(66);
+  ll.append(1);
+  ll.append(33);
+expect(ll.findKth(0)).toEqual(33);
+expect(ll.findKth(1)).toEqual(1);
+expect(ll.findKth(2)).toEqual(66);
+expect(ll.findKth(3)).toEqual(11);
+expect(ll.findKth(4)).toEqual(12);
+expect(ll.findKth(5)).toEqual(-55);
+expect(ll.findKth(8)).toEqual('exception')
 })
 
 // it('string testing',()=>{
@@ -91,7 +109,7 @@ it('test insert after specific node ',()=>{
 //   ll.insert('second');
 //   ll.insert('first');
 
-// expect(ll.toString()).toEqual('{first} -> {second} -> {third} -> NULL')
+// expect(ll.toString()).toEqual('{first} -> {second} -> {third} -> NUll')
 
 // })
 
