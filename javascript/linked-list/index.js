@@ -25,15 +25,28 @@ class LinkedList {
     return false;
   }
 
+  // toString() {
+  //   let string = "";
+  //   let current = this.head;
+  //   while (current != null) {
+  //     string += `{${current.value} -> }`;
+  //     current = current.next;
+  //   }
+  //   string += "NULL";
+  // }
   toString() {
     let string = "";
-    let current = this.head;
-    while (current != null) {
-      string += `{${current.value} -> }`;
-      current = current.next;
+    if (this.head != null) {
+        let current = this.head;
+        while (current != null) {
+            string = string + `{ ${current.value} } -> `;
+            current = current.next;
+        } string = string + "null";
+        return string;
+    } else {
+        return "empty Linked List";
     }
-    string += "NULL";
-  }
+}
 
   append(newValue) {
     const node = new Node(newValue);
@@ -78,27 +91,40 @@ class LinkedList {
     let current = this.head;
     let nodes = 0;
 
+    while (current) {
+      nodes++;
+      current = current.next;
+    }
+    if (k < 0 || k > nodes) {
+      return "exception";
+    }
+    nodes = nodes - 1 - k;
+    current = this.head;
+    while (nodes !== 0) {
+      current = current.next;
 
-while(current ){
-nodes ++;
-current = current.next;
-
-}
-if (k < 0 || k > nodes) {
-  return "exception";
-}
-nodes = nodes-1-k;
-current = this.head;
-    while (nodes !==0) {
-        current = current.next;
-
-      nodes --;  
-      }
-     
-    
+      nodes--;
+    }
 
     return current.value;
   }
+  reverse() {
+    let ll = new lledList();
+    let current = this.head;
+
+    while (current) {
+
+
+      ll.insert(current.value);
+
+      current = current.next;
+    }
+    return ll;
+
+  }
+
+
+
 }
 
 module.exports = LinkedList;
