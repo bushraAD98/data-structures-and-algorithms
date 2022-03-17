@@ -23,6 +23,20 @@ it('insert to an empty ll',()=>{
   expect(ll.head.next).toBeNull();
 
 })
+
+
+it('string testing',()=>{
+  const ll = new LinkedLilst();
+
+  ll.insert('c');
+  ll.insert('b');
+  ll.insert('a');
+
+expect(ll.toString()).toBe("{ a } -> { b } -> { c } -> null")
+
+})
+
+
 it('insert to non-empty ll',()=>{
   const ll = new LinkedLilst();
  ll.insert('first');
@@ -102,14 +116,18 @@ expect(ll.findKth(5)).toEqual(-55);
 expect(ll.findKth(8)).toEqual('exception')
 })
 
-// it('string testing',()=>{
-//   const ll = new LinkedLilst();
 
-//   ll.insert('third');
-//   ll.insert('second');
-//   ll.insert('first');
-
-// expect(ll.toString()).toEqual('{first} -> {second} -> {third} -> NUll')
+// it('tset reversed ll',()=>{
+//   const ll = new LinkedLilst() ;
+//   ll.insert(4);
+//   ll.insert(3);
+//   ll.insert(2);
+//   ll.insert(1);
+//   expect(ll.head.value).toEqual(4);
+//   expect(ll.head.next.value).toEqual(3);
+//   expect(ll.head.next.next.value).toEqual(2);
+//   expect(ll.head.next.next.next.value).toEqual(1);
+//   expect(ll.head.next.next.next.next).toBeNull();
 
 // })
 it("zipLists method ", () => {
@@ -125,5 +143,9 @@ it("zipLists method ", () => {
 
 expect(ll1.zipLists(ll1,ll2)).toBe("{ 1 } -> { 60 } -> { 22 } -> { 5 } -> { 100 } -> { 12 } -> NULL")
 })
+
+
+
+
 
 })
