@@ -112,5 +112,18 @@ expect(ll.findKth(8)).toEqual('exception')
 // expect(ll.toString()).toEqual('{first} -> {second} -> {third} -> NUll')
 
 // })
+it("zipLists method ", () => {
+  const ll1 = new LinkedLilst();
+  const ll2 = new LinkedLilst();
+  ll1.insert(100);
+  ll1.insert(22);
+  ll1.insert(1);
+  ll2.insert(12);
+  ll2.insert(5);
+  ll2.insert(60);
+
+
+expect(ll1.zipLists(ll1,ll2)).toBe("{ 1 } -> { 60 } -> { 22 } -> { 5 } -> { 100 } -> { 12 } -> NULL")
+})
 
 })
