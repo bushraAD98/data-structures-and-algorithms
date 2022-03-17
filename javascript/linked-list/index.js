@@ -41,7 +41,9 @@ class LinkedList {
         while (current != null) {
             string = string + `{ ${current.value} } -> `;
             current = current.next;
+        } string = string + "NULL";
         } string = string + "null";
+
         return string;
     } else {
         return "empty Linked List";
@@ -122,6 +124,26 @@ class LinkedList {
     return ll;
 
   }
+
+  
+  zipLists(l1, l2) {
+    let size =0;
+    let temp1 = l1.head;
+    let temp2 = l2.head;
+    while (l2.head != null && temp1 != null) {
+        l2.head = l2.head.next;
+        temp2.next = temp1.next;
+        temp1.next = temp2;
+        temp2 = l2.head;
+        temp1 = temp1.next.next;
+        size ++;
+    }
+    while (l2.head != null) { l1.append(l2.head.value); l2.head = l2.head.next; }
+    size ++;
+    return l1.toString();
+}
+
+
 
 
 

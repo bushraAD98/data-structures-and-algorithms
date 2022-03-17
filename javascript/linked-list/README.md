@@ -23,6 +23,8 @@ in this challenge we are required to do 3 methods
 
 ![img](./images/kthit.PNG)
 
+## zip linked list :
+![img](./images/ch8.PNG)
 
 
 ## Solution
