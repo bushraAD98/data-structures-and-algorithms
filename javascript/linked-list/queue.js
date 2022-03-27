@@ -24,7 +24,7 @@ this.size ++;
 
 dequeue(){
     let current = this.front;
-    if(!this.front) return 'Exception';
+    if(!this.front) return 'Exception!';
     
 this.front = current.next;
 this.size --;
@@ -33,7 +33,7 @@ return current.value;
 }
 
 peak(){
-    if(!this.front) return 'Exception';
+    if(!this.front) return 'Exception!';
     return this.front;
 }
 
