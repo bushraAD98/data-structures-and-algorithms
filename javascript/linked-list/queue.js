@@ -34,7 +34,7 @@ return current.value;
 
 peak(){
     if(!this.front) return 'Exception!';
-    return this.front;
+    return this.front.value;
 }
 
 isEmpty(){
