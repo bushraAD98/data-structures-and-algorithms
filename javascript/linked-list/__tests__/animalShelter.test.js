@@ -1,3 +1,13 @@
+ stack-and-queue
+'use strict';
+
+const {AnimalShelter,Cat,Dog} = require('../stack-queue-animalShelter/animalShelter');
+
+
+describe('testing Animal Shelter', () => {
+
+    it('test creating an instance', () => {
+
 'use strict'
 
 const { AnimalShelter, Cat, Dog } = require('../stack-queue-animal-shelter/animalShelter');
@@ -6,6 +16,7 @@ const { AnimalShelter, Cat, Dog } = require('../stack-queue-animal-shelter/anima
 describe('testing AnimalShelter', () => {
 
     it('test creating an AnimalShelter instance', () => {
+
         const animal = new AnimalShelter();
         expect(animal).toBeDefined();
     })
@@ -17,7 +28,11 @@ describe('testing AnimalShelter', () => {
 
         animal.enqueue(cat);
 
+ stack-and-queue
+        expect(animal.queue.size).toBe(1);
+
         expect(animal.queue.length).toBe(1);
+
         expect((animal.queue.peak().name)).toEqual("cat");
     })
 
@@ -28,7 +43,11 @@ describe('testing AnimalShelter', () => {
 
         animal.enqueue(dog);
 
+ stack-and-queue
+        expect(animal.queue.size).toBe(1);
+
         expect(animal.queue.length).toBe(1);
+
         expect((animal.queue.peak().name)).toEqual("dog");
     })
 
@@ -41,6 +60,29 @@ describe('testing AnimalShelter', () => {
 
         animal.enqueue(cat);
         animal.enqueue(dog);
+ stack-and-queue
+        expect(animal.queue.size).toBe(2);
+
+        animal.dequeue('cat');
+        expect(animal.queue.size).toBe(1);
+
+        animal.dequeue('dog');
+        expect(animal.queue.size).toBe(0);
+
+    })
+
+
+    it('testing edge cases', async () => {
+
+        const animal = new AnimalShelter();
+        const cat = new Cat("cat");
+
+        animal.enqueue(cat)
+        expect(animal.queue.size).toBe(1)
+
+        expect(animal.enqueue('test')).toBe(null)
+         
+    })
 
         expect(animal.queue.length).toBe(2);
 
@@ -51,4 +93,5 @@ describe('testing AnimalShelter', () => {
         expect(animal.queue.length).toBe(0);
 
     })
+
 })
