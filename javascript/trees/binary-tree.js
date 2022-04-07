@@ -52,23 +52,37 @@ class BinaryTree {
     return result;
   }
 
-findMax(){
-if(!this.root) return 'Exception!';
+  findMax() {
+    if (!this.root) return "Exception!";
 
-let current = this.root.value;
+    let current = this.root.value;
 
+    let max = (Node) => {
+      if (current < Node.value) current = Node.value;
+      if (Node.left) max(Node.left);
+      if (Node.right) max(Node.right);
+    };
+    max(this.root);
+    return current;
+  }
 
-let max = (Node) =>{
-if(current < Node.value)
-current = Node.value;
-if(Node.left) 
-  max(Node.left);
-  if(Node.right)
-  max(Node.right);
-}
-max(this.root);
-return current;
-}
+  breadthFirst() {
+    let queue = [];
+    let result = [];
+
+    let node = new Node();
+
+    queue.push(this.root);
+
+    while (queue.length) {
+      node = queue.shift();
+      result.push(node.value);
+
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+    }
+    return result;
+  }
 }
 
 class BinarySearchTree extends BinaryTree {
@@ -101,29 +115,24 @@ class BinarySearchTree extends BinaryTree {
     }
   }
 
-  contains(value){
-    if(!this.root) return false
-    
-    let current = this.root
-    let found = false
-    while(current && !found){
-          if(value < current.value){
-            current = current.left
-           } else if(value > current.value){
-              current = current.right
-           } else {
-                found = current
-                return true
-           } 
-          
-          }
-  
-      if(!found) return false;
-    
+  contains(value) {
+    if (!this.root) return false;
 
-}
+    let current = this.root;
+    let found = false;
+    while (current && !found) {
+      if (value < current.value) {
+        current = current.left;
+      } else if (value > current.value) {
+        current = current.right;
+      } else {
+        found = current;
+        return true;
+      }
+    }
 
- 
+    if (!found) return false;
+  }
 }
 
 module.exports = { BinaryTree, BinarySearchTree };
