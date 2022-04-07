@@ -7,7 +7,7 @@ const Node = require("../Node");
 let tree = null;
 
 
-describe("BT testing", () => {
+describe("Binary tree testing", () => {
   beforeAll(() => {
     let ten = new Node(10);
     let fifteen = new Node(15);
@@ -48,7 +48,12 @@ let result = [5,9,7,12,15,10]
 expect(tree.postOrder()).toEqual(result);
 
 })
+it('test finding the max node in BT',()=>{
 
+    expect(tree.findMax()).toEqual(15);
+
+
+})
 });
 
 
@@ -74,6 +79,8 @@ it('test if specific node exists in the tree',()=>{
 expect(tree2.contains(55)).toBe(true);
 expect(tree2.contains(-77)).toBe(false);
 })
+
+
 
 
 
