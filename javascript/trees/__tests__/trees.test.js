@@ -54,6 +54,12 @@ it('test finding the max node in BT',()=>{
 
 
 })
+
+it('testing breadth-first',()=>{
+
+  let result = [10,7,15,5,9,12]
+  expect(tree.breadthFirst()).toEqual(result)
+}) 
 });
 
 
