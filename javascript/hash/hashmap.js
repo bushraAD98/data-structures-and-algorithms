@@ -68,6 +68,24 @@ class HashMap {
     }
     return keys;
   }
+
+
+
+  repeatedWord(string) {
+    const arr = string.split(/[ ,]+/);
+    let key;
+    let hash;
+    for (let i = 0; i < arr.length; i++) {
+      key = arr[i].toLowerCase();
+      this.set(key, "noValue");
+      hash = this.hash(key);
+      if (this.map[hash].head.next) {
+        return key;
+      }
+    }
+  }
+
+
 }
 
 module.exports = HashMap;
