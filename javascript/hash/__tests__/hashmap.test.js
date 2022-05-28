@@ -1,7 +1,8 @@
 'use strict';
 
 const HashMap = require('../hashmap');
-
+const BinaryTree = require('../trees/binary-tree');
+const Node = require('../trees/node');
 describe("creating an element from hashmap", () => {
     let hashmap;
     beforeAll(() => {
@@ -97,5 +98,11 @@ it("Successfully retrieve a value from a bucket within the hashtable that has a 
       let string =
         "It was a queer, sultry summer, the summer they electrocuted the Rosenbergs, and I didn’t know what I was doing in New York...";
       expect(hashTable.repeatedWord(string)).toEqual("summer");
+    });
+    it("unique character method test", () => {
+      let hashTable = new HashMap(5000);
+  
+      let string = "The quick brown fox jumps over the lazy dog";
+      expect(hashTable.uniqueCharacters(string)).toEqual(false);
     });
   });
