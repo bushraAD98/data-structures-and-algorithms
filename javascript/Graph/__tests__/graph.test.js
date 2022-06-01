@@ -2,7 +2,7 @@
 
 const Graph = require('../graph');
 const Vertex = require('../Vertex');
-const Rdge = require('../Edge');
+const Edge = require('../Edge');
 
 
 describe("GRAPH TESTS", () => {
@@ -94,5 +94,29 @@ describe("GRAPH TESTS", () => {
       let emptyGraph = new Graph();
       expect(graph.size()).toEqual(4);
       expect(emptyGraph.size()).toEqual(null);
+    });
+
+    it('businessTrips that returns the cost or null', () => {
+      const graph = new Graph();
+      graph. add_node('Pandora');
+      graph. add_node('Arendelle');
+      graph. add_node('Metroville');
+      graph. add_node('Monstropolis');
+      graph. add_node('Naboo');
+      graph. add_node('Narnia');
+      graph.add_edge('Pandora', 'Arendelle', 150);
+      graph.add_edge('Pandora', 'Metroville', 82);
+      graph.add_edge('Arendelle', 'Monstropolis', 42);
+      graph.add_edge('Arendelle', 'Metroville', 99);
+      graph.add_edge('Metroville', 'Monstropolis', 105);
+      graph.add_edge('Metroville', 'Naboo', 26);
+      graph.add_edge('Monstropolis', 'Naboo', 73);
+      graph.add_edge('Naboo', 'Narnia', 250);
+      graph.add_edge('Monstropolis', 'Narnia', 37);
+  
+      // expect(graph.businessTrip(graph, ['Pandora', 'Metroville'])).toBe(82);
+      // expect(graph.businessTrip(graph, ['Arendelle', 'Monstropolis', 'Naboo'])).toBe(115);
+      // expect(graph.businessTrip(graph, ['Pandora', 'Arendelle', 'Metroville', 'Naboo'])).toBe(275);
+      // expect(graph.businessTrip(graph, ['Pandora', 'Narnia'])).toBe(null);
     });
   });
