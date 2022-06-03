@@ -3,11 +3,14 @@ the challenge asked us to read a pseudocode then write the code in our language 
 
 ## Whiteboard Process
 
+
 ![img](./assets/chal26.png)
+
 
 
 ## Solution
 ## blog:
+
 
 
       input : 
@@ -24,7 +27,7 @@ the challenge asked us to read a pseudocode then write the code in our language 
 
 
 
-![img](./assets/step2.png)
+
 
 4- compare index(#) with index(2) 
 
@@ -45,3 +48,5 @@ Time: O(n^2) The basic operation of this algorithm is comparison. This will happ
 
 Space: O(1) No additional space is being created.
        
+=======
+
