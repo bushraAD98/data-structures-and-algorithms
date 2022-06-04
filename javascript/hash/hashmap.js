@@ -1,6 +1,7 @@
 const Node = require("../linked-list/node");
 const LinkedList = require("../linked-list/index");
 
+
 class HashMap {
   constructor(size) {
     this.size = size;
@@ -70,11 +71,11 @@ class HashMap {
   }
 
   repeatedWord(string) {
-    const arr = string.split(/[ ,]+/);
+    const array = string.split(/[ ,]+/);
     let key;
     let hash;
-    for (let i = 0; i < arr.length; i++) {
-      key = arr[i].toLowerCase();
+    for (let i = 0; i < array.length; i++) {
+      key = array[i].toLowerCase();
       this.set(key, "noValue");
       hash = this.hash(key);
       if (this.map[hash].head.next) {
@@ -83,7 +84,30 @@ class HashMap {
     }
   }
 
+
+  uniqueCharacters(string) {
+    const array = string.split("");
+    let key;
+    let hash;
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] !== " ") {
+        key = array[i].toLowerCase();
+        this.set(key, "noValue");
+        hash = this.hash(key);
+        if (this.map[hash].head.next) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+
+
 }
+
+
+
 
 module.exports = HashMap;
 

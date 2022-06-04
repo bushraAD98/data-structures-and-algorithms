@@ -83,6 +83,40 @@ class BinaryTree {
     }
     return result;
   }
+
+  fizzBuzzTree(){
+let result = [];
+
+let fizzBuzz = (node)=>{
+  console.log(node);
+  console.log(Node.value);
+  if(Node.value % 15 === 0){
+    result.push('FizzBuzz');
+  }
+  else if(Node.value %3 === 0 ) 
+  {
+  result.push('Fizz');
+  }
+  else if (Node.value % 5 ===0 )
+  {
+  result.push('Buzz');
+  } 
+ else
+  {
+    result.push(Node.value);
+  }
+  if(Node.value){
+    this.root = traverse(Node)
+    fizzBuzz(Node.value)
+  }
+}
+console.log({result});
+fizzBuzz(this.root);
+return result;
+
+
+
+}
 }
 
 class BinarySearchTree extends BinaryTree {
@@ -136,3 +170,11 @@ class BinarySearchTree extends BinaryTree {
 }
 
 module.exports = { BinaryTree, BinarySearchTree };
+
+let three = new Node (3);
+let five = new Node (5);
+let seven = new Node (7);
+let twenty = new Node (20);
+const tree = new BinaryTree(3);
+
+console.log(tree.fizzBuzzTree());
