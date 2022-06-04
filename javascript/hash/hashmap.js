@@ -20,7 +20,7 @@ class HashMap {
 
   set(key, value) {
     let hashIdx = this.hash(key);
-    console.log({hashIdx});
+    console.log({ hashIdx });
     // this condition if the array is empty
     if (!this.map[hashIdx]) {
       this.map[hashIdx] = new LinkedList();
@@ -70,8 +70,6 @@ class HashMap {
     return keys;
   }
 
-
-
   repeatedWord(string) {
     const array = string.split(/[ ,]+/);
     let key;
@@ -105,6 +103,7 @@ class HashMap {
   }
 
 
+
 }
 
 
@@ -120,7 +119,7 @@ hashmap01.set("Salam", "Learner");
 hashmap01.set("Bushra", "Learner");
 hashmap01.get("Razan");
 hashmap01.set("Ibrahim", "Instructor");
-console.log(hashmap01.contains('Salam'));
+console.log(hashmap01.contains("Salam"));
 console.log(hashmap01);
 console.log(hashmap01.map[17]);
 console.log(hashmap01.map[16]);
