@@ -73,6 +73,26 @@ class Graph {
 
     return cost;
 }
+
+depthFirst(vertex){
+  const result = [];
+  const visited = {};
+  const adjacencyList = this.adjacencyList;
+  
+  const dfs = (vertex,result,visited)=>{
+      if(!vertex) return null;
+      visited[vertex] = true;
+      result.push(vertex);
+      var neighbors = this.get_Neighbors(vertex);
+      adjacencyList[vertex].forEach(neighbors => {
+          if(!visited[neighbors]){
+              return dfs(neighbors)
+          }
+      });
+  };
+
+  return result;
+}
 }
 
 const g = new Graph();
