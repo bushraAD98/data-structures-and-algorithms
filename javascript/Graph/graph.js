@@ -75,22 +75,20 @@ class Graph {
 }
 
 depthFirst(vertex){
-  const result = [];
-  const visited = {};
-  const adjacencyList = this.adjacencyList;
-  
-  const dfs = (vertex,result,visited)=>{
-      if(!vertex) return null;
+  let result = [];
+  let visited = {};
+
+  const dfs=(vertex, visited, result)=>{
+    if(!visited[vertex]){
       visited[vertex] = true;
       result.push(vertex);
-      var neighbors = this.get_Neighbors(vertex);
-      adjacencyList[vertex].forEach(neighbors => {
-          if(!visited[neighbors]){
-              return dfs(neighbors)
-          }
-      });
+      let neighbors = this.get_Neighbors(vertex);
+      for(let i=0; i<neighbors.length; i++){
+        dfs(neighbors[i].vertex, visited, result);
+      }
+    }
   };
-
+  dfs(vertex, visited, result);
   return result;
 }
 }
