@@ -1,122 +1,141 @@
 "use strict";
 
+const LinkedList = require("../linked-list/index");
+const Node = require("./node");
 const Edge = require("./Edge");
-const Vertex = require("./Vertex");
-const node = new Vertex();
+
 class Graph {
   constructor() {
-    this._adjacencyList = new Map();
+    this.adjacencyList = new LinkedList();
   }
 
-  add_node(node) {
-    // we need to add the node to the adjacency list and set an empty array for the edges
-    this._adjacencyList.set(node, []);
-    return node;
+  add_node(vertex) {
+    vertex = new Node(vertex);
+    this.adjacencyList.append(vertex);
   }
 
-  add_edge(start_node, end_node) {
-    if (
-      !this._adjacencyList.has(start_node) ||
-      !this._adjacencyList.has(end_node)
-    ) {
-      return "Invalid vertex";
-    }
-    const adjacencies = this._adjacencyList.get(start_node);
-    adjacencies.push(new Edge(end_node));
-    console.log({adjacencies});
-  }
+  add_edge(vertex1, vertex2, weight = 0) {
+    let node = this.adjacencyList.head;
 
-  get_nodes() {
-    let str = "";
-    for (const [vertex, edge] of this._adjacencyList.entries()) {
-      let edg;
-      if (edge[0]) {
-        edg = "";
-        for (let i = 0; i < edge.length; i++) {
-          edg += `${edge[i].vertex.value},`;
-        }
-      } else {
-        edg = edge;
+    while (node) {
+      if (node.value.value === vertex1) {
+        node.value.edges.push(new Edge(vertex2, weight));
       }
-      str = str + ` Vertex ${vertex["value"]} => edge ${edg} ||`;
+      node = node.next;
     }
-    return str;
+  }
+  get_Nodes() {
+    let node = this.adjacencyList.head;
+    let vertices = [];
+    while (node) {
+      vertices.push(node.value.value);
+      node = node.next;
+    }
+    return vertices;
   }
 
-  get_Neighbors(node) {
-    for (const [vertex, edge] of this._adjacencyList.entries()) {
-      if (vertex === node) {
-        return edge;
+  get_Neighbors(vertex) {
+    if (!this.adjacencyList.head) return null;
+    let node = this.adjacencyList.head;
+
+    while (node) {
+      if (node.value.value === vertex) {
+        return node.value.edges;
       }
+      node = node.next;
     }
   }
 
   size() {
-    if (this._adjacencyList.size > 0) {
-      return this._adjacencyList.size;
-    } else {
-      return null;
+    let node = this.adjacencyList.head;
+    let size = 0;
+    while (node) {
+      size++;
+      node = node.next;
     }
+    return size;
   }
+  
 
   businessTrip(graph, cities) {
     let cost = 0;
     for (let i = 0; i < cities.length; i++) {
-        let neighbors = graph. get_Neighbors(cities[i]);
-        for (let j = 0; j < neighbors.length; j++) {
-            if (neighbors[j].vertex === cities[i + 1]) {
-                cost += neighbors[j].weight;
-            }
+      let neighbors = graph.get_Neighbors(cities[i]);
+      for (let j = 0; j < neighbors.length; j++) {
+        if (neighbors[j].vertex === cities[i + 1]) {
+          cost += neighbors[j].weight;
         }
-    }
-    if (cost === 0) return null
-
-    return cost;
-}
-
-depthFirst(vertex){
-  let result = [];
-  let visited = {};
-
-  const dfs=(vertex, visited, result)=>{
-    if(!visited[vertex]){
-      visited[vertex] = true;
-      result.push(vertex);
-      let neighbors = this.get_Neighbors(vertex);
-      for(let i=0; i<neighbors.length; i++){
-        dfs(neighbors[i].vertex, visited, result);
       }
     }
-  };
-  dfs(vertex, visited, result);
-  return result;
+    if (cost === 0) return null;
+
+    return cost;
+  }
+
+  depthFirst(vertex) {
+    let result = [];
+    let visited = {};
+
+    const dfs = (vertex, visited, result) => {
+      if (!visited[vertex]) {
+        visited[vertex] = true;
+        result.push(vertex);
+        let neighbors = this.get_Neighbors(vertex);
+        for (let i = 0; i < neighbors.length; i++) {
+          dfs(neighbors[i].vertex, visited, result);
+        }
+      }
+    };
+    dfs(vertex, visited, result);
+    return result;
+  }
+
+  breadthFirst(start) {
+    let queue = [];
+    let visited = {};
+    let result = [];
+    let current;
+
+    queue.push(start);
+    while (queue.length) {
+      current = queue.shift();
+      result.push(current);
+      let neighbors = this.get_Neighbors(current);
+
+      for (let i = 0; i < neighbors.length; i++) {
+        if (!visited[neighbors[i].vertex]) {
+          queue.push(neighbors[i].vertex);
+        }
+      }
+    }
+    return result;
+  }
 }
-}
 
-const g = new Graph();
-let ten;
-  let two;
-  let six;
-  let four;
-  let five;
+// const g = new Graph();
+// let ten;
+//   let two;
+//   let six;
+//   let four;
+//   let five;
 
-  ten = new Vertex(10);
-  two = new Vertex(2);
-  six = new Vertex(6);
-  four = new Vertex(4);
-  five = new Vertex(5);
+//   ten = new Vertex(10);
+//   two = new Vertex(2);
+//   six = new Vertex(6);
+//   four = new Vertex(4);
+//   five = new Vertex(5);
 
-  g.add_node(10);
-  g.add_node(2);
-  g.add_node(6);
-  g.add_node(4);
-  g.add_node(5);
-  console.log(g);
+//   g.add_node(10);
+//   g.add_node(2);
+//   g.add_node(6);
+//   g.add_node(4);
+//   g.add_node(5);
+//   console.log(g);
 
-  g.add_edge(ten,two);
-  g.add_edge(two,six);
-  g.add_edge(two,four);
-  g.add_edge(four,five);
-  console.log(g);
-  console.log(g.get_Neighbors(two));
+//   g.add_edge(ten,two);
+//   g.add_edge(two,six);
+//   g.add_edge(two,four);
+//   g.add_edge(four,five);
+//   console.log(g);
+//   console.log(g.get_Neighbors(two));
 module.exports = Graph;
