@@ -1,84 +1,65 @@
-'use strict';
+const {BT}=require('../binaryTree');
+const Node = require('../../node');
+const tree_intersection = require('../intersection');
+let tree1 ;
+let tree2 ;
+let tree3 ;
+describe('tree Intersection test', () => {
+    let node1 = new Node(150);
+    let node2 = new Node(100);
+    let node3 = new Node(250);
+    let node4 = new Node(75);
+    let node5 = new Node(160);
+    let node6 = new Node(200);
+    let node7 = new Node(350);
+    let node8 = new Node(125);
+    let node9 = new Node(175);
+    let node10 = new Node(300);
+    let node11 = new Node(500);
 
-const hashMap = require('../../hashmap');
-const Node = require('../../../linked-list/node');
-const {BinaryTree} = require('../../../trees/binary-tree');
-const   tree_intersection = require('../intersection');
+    node1.left = node2;
+    node1.right = node3;
+    node2.left = node4;
+    node2.right = node5;
+    node3.left = node6;
+    node3.right = node7;
+    node5.left = node8;
+    node5.right = node9;
+    node7.left = node10;
+    node7.right = node11;
+    tree1 = new BT(node1);
+    let nodeOne = new Node(42);
+    let nodeTwo = new Node(100);
+    let nodeThree = new Node(600);
+    let nodeFour = new Node(15);
+    let nodeFive = new Node(160);
+    let nodeSix = new Node(200);
+    let nodeSeven = new Node(350);
+    let nodeEight = new Node(125);
+    let nodeNine = new Node(175);
+    let nodeTen = new Node(4);
+    let nodeeleven = new Node(500);
+
+    nodeOne.left = nodeTwo;
+    nodeOne.right = nodeThree;
+    nodeTwo.left = nodeFour;
+    nodeTwo.right = nodeFive;
+    nodeThree.left = nodeSix;
+    nodeThree.right = nodeSeven;
+    nodeFive.left = nodeEight;
+    nodeFive.right = nodeNine;
+    nodeSeven.left = nodeTen;
+    nodeSeven.right = nodeeleven;
 
 
-describe("TREES INTERSECTION TESTS", () => {
-    let firstTree;
-    let secondTree;
-    beforeAll(() => {
-      //first tree
-      let one = new Node(150);
-      let two = new Node(100);
-      let three = new Node(250);
-      let four = new Node(75);
-      let five = new Node(160);
-      let six = new Node(125);
-      let seven = new Node(175);
-      let eight = new Node(200);
-      let nine = new Node(350);
-      let ten = new Node(300);
-      let eleven = new Node(500);
-  
-      one.left = two;
-      one.right = three;
-      two.left = four;
-      two.right = five;
-      five.left = six;
-      five.right = seven;
-      three.right = eight;
-      three.left = nine;
-      nine.left = ten;
-      nine.right = eleven;
-  
-      //second tree
-      let one2 = new Node(42);
-      let two2 = new Node(100);
-      let three2 = new Node(600);
-      let four2 = new Node(15);
-      let five2 = new Node(160);
-      let six2 = new Node(125);
-      let seven2 = new Node(175);
-      let eight2 = new Node(200);
-      let nine2 = new Node(350);
-      let ten2 = new Node(4);
-      let eleven2 = new Node(500);
-  
-      one2.left = two2;
-      one2.right = three2;
-      two2.left = four2;
-      two2.right = five2;
-      five2.left = six2;
-      five2.right = seven2;
-      three2.right = eight2;
-      three2.left = nine2;
-      nine2.left = ten2;
-      nine2.right = eleven2;
-  
-      firstTree = new BinaryTree(one);
-      secondTree = new BinaryTree(one2);
-    });
-    // successfuly return the common nodes between two trees
-    it("1.successfuly return the common nodes between two trees", () => {
-      let hashTable = new hashMap(5000);
-      let expectedResults = [100, 160, 125, 175, 350, 500, 200];
-  
-      expect(tree_intersection(firstTree, secondTree)).toEqual(
-        expectedResults
-      );
-    });
-  
-    // check the next of uncommon elements is null in the hash table
-    it("2.check the next of uncommon elements is null in the hash table", () => {
-      let hashTable = new hashMap(5000);
-      let expectedResults = [100, 160, 125, 175, 350, 500, 200];
-      expect(tree_intersection(firstTree, secondTree)).toEqual(
-        expectedResults
-      );
-      expect(hashTable.storage[42].head.next).toBeNull();
-      expect(hashTable.storage[100].head.next).toBeTruthy();
-    });
-  });
+
+    tree2 = new BT(nodeOne);
+    tree3 = new BT();
+  it ('should return [100,160,125,175,200,350,500]', () => {
+      expect(tree_intersection(tree1,tree2)).toEqual([100,160,125,175,200,350,500]);
+  })
+    it ('edge case if one of the Trees is empty', () => {
+        expect(tree_intersection(tree1,tree3)).toEqual("No intersection");
+    })
+
+})
