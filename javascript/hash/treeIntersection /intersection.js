@@ -1,33 +1,24 @@
-const HashMap = require('../hashmap');
+const HashMap = require('../hashmap')
+
+function tree_intersection(tree1, tree2) {
+    if (!tree1.root || !tree2.root) return "No intersection"
 
 
-  function tree_intersection(firstTree, secondTree) {
-    const hashTable = new HashMap(20)
-    let key;
-    let counter = 0;
-    let hash;
-    let results = [];
-    let traverseTree = (node) => {
-      key = node.value;
-      hashTable.set(key, "noValue");
-      if (counter > 0) {
-        typeof key == "number" ? (hash = key) : map.hash(key);
-        if (hashTable.map[hash].head.next) {
-          results.push(hash);
+    const hashTable = new HashMap(13)
+
+    let result = []
+    let tree1PreOrder = tree1.preOrder()
+    let tree2PreOrder = tree2.preOrder()
+
+    for (let i = 0; i < tree2PreOrder.length; i++) {
+        hashTable.set(tree2PreOrder[i], [i])
+    }
+
+    for (let i = 0; i < tree1PreOrder.length; i++) {
+        if (hashTable.contains(tree1PreOrder[i])) {
+            result.push(tree1PreOrder[i])
         }
-      }
-      if (node.left) {
-        traverseTree(node.left);
-      }
-      if (node.right) {
-        traverseTree(node.right);
-      }
-    };
-    traverseTree(firstTree.root);
-    counter++;
-    traverseTree(secondTree.root);
-
-    return results;
-  }
-
-  module.exports = tree_intersection;
+    }
+    return result
+}
+module.exports = tree_intersection
